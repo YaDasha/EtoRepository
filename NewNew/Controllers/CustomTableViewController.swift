@@ -30,6 +30,9 @@ class CustomTableViewController: UIViewController {
     
     var books: [Book] = []
     
+    var expandedIndexPath: IndexPath?
+    var expanded: Bool = false
+    
     let provider = MoyaProvider<BooksAPI>()
     
     override func viewDidLoad() {
@@ -94,13 +97,6 @@ class CustomTableViewController: UIViewController {
     }
 }
 
-struct Book: Decodable {
-    let book: String
-    let title: String?
-    let author: String?
-    let condition: String
-}
-
 extension CustomTableViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -112,7 +108,6 @@ extension CustomTableViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Custom Cell", for: indexPath) as? CustomCell else { return UITableViewCell() }
-        
         let book = books[indexPath.section]
 
         let model = CustomCellModel(
@@ -121,11 +116,12 @@ extension CustomTableViewController: UITableViewDelegate, UITableViewDataSource 
             title: book.title ?? "",
             subtitle: book.author ?? "",
             condition: book.condition,
-            backgroundColor: .systemYellow
+            backgroundColor: .systemYellow,
+            expanded: indexPath == expandedIndexPath
         )
         
-        cell.configure(model: model)
-        return cell
+        cell.configure(model: model, expanded: indexPath == expandedIndexPath)
+            return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -139,11 +135,22 @@ extension CustomTableViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cellHeight
+        if expandedIndexPath == indexPath {
+            return cellHeight * 2
+        } else {
+            return cellHeight
+        }
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if expandedIndexPath == indexPath {
+            expandedIndexPath = nil
+            expanded = false
+        } else {
+            expandedIndexPath = indexPath
+            expanded = true
+        }
+        tableView.reloadData()
+    }
 }
 
-// Зарегистрировать аккаунт на github, создать репозиторий, создать ssh ключ, подключить его к ноутбуку
-// при нажатии на ячейку она расширяется в два раза и в расширенной ячейке показывается что-то еще

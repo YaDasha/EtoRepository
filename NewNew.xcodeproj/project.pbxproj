@@ -21,6 +21,8 @@
 		26EB4A422BE13CF10039E380 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 26EB4A412BE13CF10039E380 /* ReactiveMoya */; };
 		26EB4A442BE13CF10039E380 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 26EB4A432BE13CF10039E380 /* RxMoya */; };
 		26EB4A462BE18D930039E380 /* BooksAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EB4A452BE18D930039E380 /* BooksAPI.swift */; };
+		26F2C9EB2BE2999600FEFA53 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F2C9EA2BE2999600FEFA53 /* Book.swift */; };
+		26F2C9ED2BE29A0500FEFA53 /* CustomCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F2C9EC2BE29A0500FEFA53 /* CustomCellModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		26EB4A122BDD80310039E380 /* CustomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewController.swift; sourceTree = "<group>"; };
 		26EB4A142BDFB7E20039E380 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		26EB4A452BE18D930039E380 /* BooksAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksAPI.swift; sourceTree = "<group>"; };
+		26F2C9EA2BE2999600FEFA53 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		26F2C9EC2BE29A0500FEFA53 /* CustomCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,18 +76,44 @@
 		26EB49F62BDD45B60039E380 /* NewNew */ = {
 			isa = PBXGroup;
 			children = (
+				26F2C9EE2BE29B5200FEFA53 /* Controllers */,
+				26F2C9EF2BE29DF000FEFA53 /* Models */,
+				26F2C9F02BE29E4300FEFA53 /* Common */,
 				26EB49F72BDD45B60039E380 /* AppDelegate.swift */,
 				26EB49F92BDD45B60039E380 /* SceneDelegate.swift */,
-				26EB49FB2BDD45B60039E380 /* ViewController.swift */,
-				26EB4A102BDD73A10039E380 /* BornPinkController.swift */,
-				26EB4A122BDD80310039E380 /* CustomTableViewController.swift */,
-				26EB4A452BE18D930039E380 /* BooksAPI.swift */,
-				26EB4A142BDFB7E20039E380 /* CustomCell.swift */,
 				26EB4A002BDD45B70039E380 /* Assets.xcassets */,
 				26EB4A022BDD45B70039E380 /* LaunchScreen.storyboard */,
 				26EB4A052BDD45B70039E380 /* Info.plist */,
 			);
 			path = NewNew;
+			sourceTree = "<group>";
+		};
+		26F2C9EE2BE29B5200FEFA53 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				26EB49FB2BDD45B60039E380 /* ViewController.swift */,
+				26EB4A102BDD73A10039E380 /* BornPinkController.swift */,
+				26EB4A122BDD80310039E380 /* CustomTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		26F2C9EF2BE29DF000FEFA53 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				26EB4A452BE18D930039E380 /* BooksAPI.swift */,
+				26F2C9EC2BE29A0500FEFA53 /* CustomCellModel.swift */,
+				26F2C9EA2BE2999600FEFA53 /* Book.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		26F2C9F02BE29E4300FEFA53 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				26EB4A142BDFB7E20039E380 /* CustomCell.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +197,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26F2C9ED2BE29A0500FEFA53 /* CustomCellModel.swift in Sources */,
+				26F2C9EB2BE2999600FEFA53 /* Book.swift in Sources */,
 				26EB49FC2BDD45B60039E380 /* ViewController.swift in Sources */,
 				26EB4A132BDD80310039E380 /* CustomTableViewController.swift in Sources */,
 				26EB4A112BDD73A10039E380 /* BornPinkController.swift in Sources */,

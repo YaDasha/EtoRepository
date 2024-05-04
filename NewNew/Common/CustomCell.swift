@@ -22,7 +22,7 @@ class CustomCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = .darkGray
+        label.textColor = .systemOrange
         return label
     }()
     
@@ -34,33 +34,47 @@ class CustomCell: UITableViewCell {
         return backgroundImageBP
     }()
     
+    let conditionLabel: UILabel = {
+        let conditionLabel = UILabel()
+        conditionLabel.translatesAutoresizingMaskIntoConstraints = false
+        conditionLabel.font = UIFont.systemFont(ofSize: 12)
+        conditionLabel.textColor = .systemRed
+        return conditionLabel
+    }()
+
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         contentView.addSubview(backgroundImageBP)
         contentView.addSubview(titleLabel)
         contentView.addSubview(subtitleLabel)
+        contentView.addSubview(conditionLabel)
         
         settingConstraint()
     }
     
     func settingConstraint() {
+        backgroundImageBP.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(10)
+            make.top.equalTo(5)
             make.leading.equalTo(10)
             make.trailing.equalTo(10)
         }
         
         subtitleLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(5)
-            make.bottom.equalTo(-10)
             make.leading.equalTo(10)
             make.trailing.equalTo(-10)
         }
         
-        backgroundImageBP.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        conditionLabel.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-10)
+            make.leading.equalTo(10)
+            make.trailing.equalTo(-10)
         }
     }
     
@@ -68,19 +82,14 @@ class CustomCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(model: CustomCellModel) {
+    func configure(model: CustomCellModel, expanded: Bool) {
         backgroundImageBP.image = model.backgroundImageBP
         titleLabel.text = model.title
         subtitleLabel.text = model.subtitle
         contentView.backgroundColor = model.backgroundColor
+        
+        conditionLabel.text = model.condition
+        conditionLabel.isHidden = !expanded
     }
 }
 
-struct CustomCellModel {
-    let backgroundImageBP: UIImage
-    let book: String
-    let title: String
-    let subtitle: String
-    let condition: String
-    let backgroundColor: UIColor
-}
